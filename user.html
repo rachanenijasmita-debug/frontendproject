@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - User Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="side-brand"><span>₹</span> Expense Tracker</div>
+      <nav>
+        <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+        <button class="nav-btn" data-section="expenses">Expenses</button>
+        <button class="nav-btn" data-section="income">Income</button>
+        <button class="nav-btn" data-section="budget">Budgets</button>
+        <button class="nav-btn" data-section="accounts">Accounts</button>
+        <button class="nav-btn" data-section="recurring">Recurring</button>
+        <button class="nav-btn" data-section="reports">Reports</button>
+      </nav>
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p id="welcomeText">Welcome back!</p>
+        </div>
+        <div class="user-chip" id="userChip">User</div>
+      </header>
+
+      <section id="dashboard" class="page-section active">
+        <div class="cards">
+          <div class="stat-card"><span>Total Income</span><strong id="totalIncome">₹0</strong></div>
+          <div class="stat-card"><span>Total Expense</span><strong id="totalExpense">₹0</strong></div>
+          <div class="stat-card"><span>Balance</span><strong id="balance">₹0</strong></div>
+          <div class="stat-card"><span>Transactions</span><strong id="transactionCount">0</strong></div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-head"><h3>Expense by Category</h3></div>
+            <div id="categoryChart" class="bar-chart"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>Recent Transactions</h3></div>
+            <div id="recentTransactions"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="expenses" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>Add Expense</h3></div>
+          <form id="expenseForm" class="form-grid">
+            <input id="expenseAmount" type="number" min="1" placeholder="Amount" required>
+            <select id="expenseCategory" required>
+              <option value="">Category</option>
+              <option>Food</option><option>Travel</option><option>Shopping</option>
+              <option>Education</option><option>Bills</option><option>Entertainment</option>
+              <option>Healthcare</option><option>Other</option>
+            </select>
+            <input id="expenseDescription" type="text" placeholder="Description" required>
+            <input id="expenseDate" type="date" required>
+            <select id="expenseAccount" required></select>
+            <button class="primary-btn" type="submit">Add Expense</button>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Expense History</h3></div>
+          <div class="table-wrap"><table><thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Account</th><th>Amount</th><th>Action</th></tr></thead><tbody id="expenseTable"></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="income" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>Add Income</h3></div>
+          <form id="incomeForm" class="form-grid">
+            <input id="incomeAmount" type="number" min="1" placeholder="Amount" required>
+            <select id="incomeSource" required>
+              <option value="">Source</option><option>Salary</option><option>Pocket Money</option>
+              <option>Scholarship</option><option>Freelance</option><option>Other</option>
+            </select>
+            <input id="incomeDescription" type="text" placeholder="Description" required>
+            <input id="incomeDate" type="date" required>
+            <button class="primary-btn" type="submit">Add Income</button>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Income History</h3></div>
+          <div class="table-wrap"><table><thead><tr><th>Date</th><th>Source</th><th>Description</th><th>Amount</th><th>Action</th></tr></thead><tbody id="incomeTable"></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="budget" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>Set Monthly Budget</h3></div>
+          <form id="budgetForm" class="form-grid">
+            <select id="budgetCategory" required>
+              <option value="">Category</option>
+              <option>Food</option><option>Travel</option><option>Shopping</option>
+              <option>Education</option><option>Bills</option><option>Entertainment</option>
+              <option>Healthcare</option><option>Other</option>
+            </select>
+            <input id="budgetAmount" type="number" min="1" placeholder="Budget amount" required>
+            <button class="primary-btn" type="submit">Save Budget</button>
+          </form>
+        </div>
+        <div id="budgetList" class="cards"></div>
+      </section>
+
+      <section id="accounts" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>Add Account</h3></div>
+          <form id="accountForm" class="form-grid">
+            <input id="accountName" type="text" placeholder="Account name (e.g. Cash)" required>
+            <button class="primary-btn" type="submit">Add Account</button>
+          </form>
+        </div>
+        <div id="accountList" class="cards"></div>
+      </section>
+
+      <section id="recurring" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>Add Recurring Expense</h3></div>
+          <form id="recurringForm" class="form-grid">
+            <input id="recurringName" type="text" placeholder="Name (e.g. Internet)" required>
+            <input id="recurringAmount" type="number" min="1" placeholder="Amount" required>
+            <select id="recurringFrequency"><option>Monthly</option><option>Weekly</option></select>
+            <input id="recurringDate" type="date" required>
+            <button class="primary-btn" type="submit">Save Recurring Expense</button>
+          </form>
+        </div>
+        <div class="panel"><div id="recurringList"></div></div>
+      </section>
+
+      <section id="reports" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>Financial Report</h3><button id="exportBtn" class="secondary-btn">Export CSV</button></div>
+          <div class="report-box">
+            <p><span>Total Income</span><strong id="reportIncome">₹0</strong></p>
+            <p><span>Total Expenses</span><strong id="reportExpense">₹0</strong></p>
+            <p><span>Current Balance</span><strong id="reportBalance">₹0</strong></p>
+          </div>
+          <h3>Category Summary</h3>
+          <div id="reportCategories"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/user.js"></script>
+</body>
+</html>

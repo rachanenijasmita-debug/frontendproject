@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <div class="auth-card">
+    <div class="brand">
+      <div class="brand-icon">₹</div>
+      <div>
+        <h1>Expense Tracker</h1>
+        <p>Manage your money simply.</p>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" id="loginTab">Login</button>
+      <button class="tab" id="signupTab">Signup</button>
+    </div>
+
+    <form id="loginForm" class="auth-form">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="Enter email" required>
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="Enter password" required>
+      <button class="primary-btn" type="submit">Login</button>
+      <p class="hint">Demo admin: admin@gmail.com / admin123</p>
+      <p id="loginMessage" class="message"></p>
+    </form>
+
+    <form id="signupForm" class="auth-form hidden">
+      <label>Full Name</label>
+      <input id="signupName" type="text" placeholder="Enter your name" required>
+      <label>Email</label>
+      <input id="signupEmail" type="email" placeholder="Enter email" required>
+      <label>Password</label>
+      <input id="signupPassword" type="password" minlength="4" placeholder="Minimum 4 characters" required>
+      <button class="primary-btn" type="submit">Create Account</button>
+      <p id="signupMessage" class="message"></p>
+    </form>
+  </div>
+  <script src="js/auth.js"></script>
+</body>
+</html>
