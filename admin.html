@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker — Administration</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="side-brand"><span>₹</span> Expense Tracker</div>
+      <nav>
+        <button class="nav-btn active" data-section="adminDashboard">Dashboard</button>
+        <button class="nav-btn" data-section="users">Users</button>
+        <button class="nav-btn" data-section="adminTransactions">Transactions</button>
+      </nav>
+      <button id="adminLogout" class="logout-btn">Logout</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><h2 id="adminTitle">Admin Dashboard</h2><p>Monitor platform activity and accounts.</p></div>
+        <div class="user-chip">ADMIN</div>
+      </header>
+
+      <section id="adminDashboard" class="page-section active">
+        <div class="cards">
+          <div class="stat-card"><span>Registered Users</span><strong id="adminUsers">0</strong></div>
+          <div class="stat-card"><span>Total Expenses</span><strong id="adminExpense">₹0</strong></div>
+          <div class="stat-card"><span>Total Income</span><strong id="adminIncome">₹0</strong></div>
+          <div class="stat-card"><span>Total Transactions</span><strong id="adminTransactionsCount">0</strong></div>
+        </div>
+      </section>
+
+      <section id="users" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>Registered Users</h3></div>
+          <div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Joined</th></tr></thead><tbody id="usersTable"></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="adminTransactions" class="page-section">
+        <div class="panel">
+          <div class="panel-head"><h3>All Transactions</h3></div>
+          <div class="table-wrap"><table><thead><tr><th>User</th><th>Type</th><th>Date</th><th>Category/Source</th><th>Amount</th></tr></thead><tbody id="adminTransactionsTable"></tbody></table></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/admin.js"></script>
+</body>
+</html>
